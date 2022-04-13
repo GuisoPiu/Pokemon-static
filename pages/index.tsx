@@ -1,6 +1,6 @@
 
 import { NextPage, GetStaticProps } from 'next'
-import { Card, Grid, Row, Text } from '@nextui-org/react';
+import { Grid } from '@nextui-org/react';
 
 import { Layout } from '../components/layouts'
 import { pokeApi } from '../api';
@@ -37,7 +37,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
  
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
 
-  console.log(data);
   const pokemons: SmallPokemon[] = data.results.map( (poke, i) => ({ 
     ...poke,
     id: i + 1,
